@@ -9,17 +9,24 @@ function die {
 
 function usage {
   cat <<USAGE
-Usage: $(basename "$0") [ OPTIONS ] infile outfile
+Usage: $(basename "$0") [ OPTIONS ] <infile> <outfile>
 
-Extracts web requests and sorts them slowest to fastest.
+Extracts web requests from GoCD server logs (request logging enabled) and sorts
+them slowest to fastest.
+
+Formal Parameters:
+
+<infile>          A GoCD server log file. Only considers 'RequestLog' lines.
+<outfile>         Results are written here. \`--csv\` ensures the filename ends
+                  with a ".csv" extension.
 
 Options:
 
-  --help          Show this message
+  --help          Show this message.
   --csv           Output to CSV format for manipulation in a spreadsheet
                     or similar; appends a ".csv" file extension to <outfile>
-                    if it does not have one
-  --thresh=N      Only consider requests that took longer than N ms
+                    if it does not have one.
+  --thresh=N      Only consider requests that took longer than N ms.
 USAGE
 }
 
